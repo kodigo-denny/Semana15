@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+    function cambiarNombre(){
+        const nombre = document.querySelector("#nombre");
+        localStorage.setItem("nombre", nombre.value)
+    }
+    function limpiar(){
+        localStorage.clear();
+    }
+</script>
+
+</head>
+<body>
+    <input type="text" id="nombre">
+    <button onclick="cambiarNombre()">Cambiar</button>
+    <button onclick="limpiar()">Limpiar</button>
+    <p id="estado">
+
+    </p>
+</body>
+</html>
+<script>
+    const estado = document.querySelector("#estado");
+    estado.innerHTML = localStorage.getItem("nombre")
+</script>
