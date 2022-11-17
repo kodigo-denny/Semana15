@@ -17,8 +17,8 @@ const Tabla = () => {
             let filasHtml = "";
             lista.forEach(e => {
                 if(e.id != "Id"){
-                    let btnEditar = `<a class='btn btn-secondary'>Edit</a>`;
-                    let btnEliminar = `<a class='btn btn-danger'>Eliminar</a>`;
+                    let btnEditar = `<a class='btn btn-secondary' href='/Edit/${e.id}'>Edit</a>`;
+                    let btnEliminar = `<a class='btn btn-danger' href='/Delete/${e.id}'>Eliminar</a>`;
                     filasHtml += `<tr><td>${btnEditar} ${btnEliminar}</td><td>${e.id}</td><td>${e.nombre}</td><td>${e.apellido}</td><td>${e.carrera}</td></tr>`;
                 }
             });

@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import CampoTexto from './CampoTexto'
 
 const StudentAdd = () => {
+    const [mensaje, setMensaje] = useState("");
 
 const guardarStudent = () => {
+    setMensaje("");
     let id = document.querySelector("#txtId").value;
     let nombre = document.querySelector("#txtNombre").value;
     let apellido = document.querySelector("#txtApellido").value;
@@ -15,7 +17,7 @@ const guardarStudent = () => {
             let lista = JSON.parse(localStorage.getItem("estudiantes"));
 
             if(existe(lista, id))
-                alert("El id ingresado ya existe");
+                setMensaje("El id ingresado ya existe");
             else{
                 // Guardar
                 let student = {id:id, nombre:nombre, apellido:apellido, carrera:carrera};
@@ -30,7 +32,7 @@ const guardarStudent = () => {
         }
     }
     else{
-        alert("Complete todos los campos");
+        setMensaje("Complete todos los campos");
     }
 }
 
@@ -49,6 +51,7 @@ const esValido = (id, nombre, apellido, carrera) =>{
 
   return (
     <div className='row'>
+        <div className={mensaje!=""?'alert alert-warning':''}>{mensaje}</div>
         <CampoTexto id="txtId">Id</CampoTexto>
         <CampoTexto id="txtNombre">Nombre</CampoTexto>
         <CampoTexto id="txtApellido">Apellido</CampoTexto>
